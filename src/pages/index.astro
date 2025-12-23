@@ -1,0 +1,428 @@
+---
+// src/pages/index.astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Hero from "@/components/Hero.astro";
+import ImpactGraphics from "@/components/ImpactGraphics.astro";
+---
+
+<BaseLayout
+  title="Buffalo Harvest Inc. | Community Gardens & Food Access in Buffalo, NY"
+  description="Buffalo Harvest Inc. is a 501(c)(3) nonprofit improving community health in Buffalo, NY through community gardens, youth education, and sustainable agriculture.">
+
+  <!-- HERO (HOME) SECTION -->
+  <Hero />
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="section-fade min-h-screen flex items-center py-16 border-t border-emerald-100">
+    <div class="w-full">
+      <div class="max-w-4xl mx-auto bg-white/80 border border-emerald-100 rounded-3xl shadow-sm px-6 py-10 md:px-10 md:py-12">
+        <div class="grid gap-10 md:grid-cols-2 md:items-center">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold text-emerald-900 mb-4">
+              About Buffalo Harvest Inc.
+            </h2>
+
+            <p class="text-sm md:text-base leading-relaxed text-emerald-900/80 mb-4">
+              Buffalo Harvest Inc. is organized exclusively for charitable and educational purposes
+              within the meaning of Section 501(c)(3) of the Internal Revenue Code. Our work is rooted
+              in a simple belief: every neighborhood in Buffalo and Western New York deserves access
+              to fresh, healthy, locally grown food.
+            </p>
+
+            <p class="text-sm md:text-base leading-relaxed text-emerald-900/80 mb-3">
+              We focus on three pillars:
+            </p>
+
+            <ul class="list-disc list-inside space-y-1 text-sm md:text-base text-emerald-900/80 mb-4">
+              <li>Community gardens that turn underused spaces into productive land</li>
+              <li>Youth education that connects young people to food, land, and health</li>
+              <li>Agricultural training that builds skills and pathways to opportunity</li>
+            </ul>
+
+            <p class="text-sm md:text-base leading-relaxed text-emerald-900/80">
+              Our vision is a network of gardens, farms, and learning spaces across Buffalo that not
+              only feed families, but also create community, build skills, and inspire future leaders.
+            </p>
+          </div>
+
+          <div class="md:justify-self-end">
+            <ImpactGraphics variant="harvest" class="max-w-xl mx-auto" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION SECTION -->
+  <section id="mission" class="section-fade min-h-screen flex items-center py-16 border-t border-emerald-100 bg-emerald-50/40">
+    <div class="w-full">
+      <div class="max-w-5xl mx-auto bg-white/80 border border-emerald-100 rounded-3xl shadow-sm px-6 py-10 md:px-10 md:py-12">
+        <div class="grid gap-10 md:grid-cols-2 md:items-start">
+          <div class="space-y-6">
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-emerald-900 mb-3">
+                Our Mission
+              </h2>
+              <p class="text-sm md:text-base leading-relaxed text-emerald-900/80">
+                Our mission is to improve community health and sustainability by growing and providing
+                access to fresh, locally produced food. We do this by empowering residents to cultivate
+                their own produce, learn sustainable farming practices, and build stronger, healthier
+                neighborhoods in Buffalo and Western New York.
+              </p>
+            </div>
+
+            <div>
+              <p class="text-sm md:text-base leading-relaxed text-emerald-900/80 mb-3">
+                We focus on four main pillars:
+              </p>
+
+              <div class="grid gap-4 md:grid-cols-2">
+                <div class="rounded-xl border border-emerald-100 bg-emerald-50/80 p-4">
+                  <h3 class="text-sm font-semibold text-emerald-900 mb-2">Health</h3>
+                  <p class="text-xs md:text-sm text-emerald-900/80">
+                    Increasing access to nutritious food and reducing diet-related disease through education and fresh produce.
+                  </p>
+                </div>
+
+                <div class="rounded-xl border border-emerald-100 bg-emerald-50/80 p-4">
+                  <h3 class="text-sm font-semibold text-emerald-900 mb-2">Sustainability</h3>
+                  <p class="text-xs md:text-sm text-emerald-900/80">
+                    Supporting environmentally responsible growing practices that protect soil, water, and local ecosystems.
+                  </p>
+                </div>
+
+                <div class="rounded-xl border border-emerald-100 bg-emerald-50/80 p-4">
+                  <h3 class="text-sm font-semibold text-emerald-900 mb-2">Education</h3>
+                  <p class="text-xs md:text-sm text-emerald-900/80">
+                    Providing hands-on learning for youth and adults in gardening, agriculture, and nutrition.
+                  </p>
+                </div>
+
+                <div class="rounded-xl border border-emerald-100 bg-emerald-50/80 p-4">
+                  <h3 class="text-sm font-semibold text-emerald-900 mb-2">Community</h3>
+                  <p class="text-xs md:text-sm text-emerald-900/80">
+                    Using food and land as tools to build relationships, leadership, and shared ownership across neighborhoods.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="md:sticky md:top-28">
+            <ImpactGraphics variant="garden" class="max-w-xl mx-auto" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS SECTION -->
+  <section id="events" class="section-fade min-h-screen flex items-center py-16 border-t border-emerald-100">
+    <div class="w-full">
+      <div class="max-w-5xl mx-auto bg-white/80 border border-emerald-100 rounded-3xl shadow-sm px-6 py-10 md:px-10 md:py-12 space-y-6">
+
+        <div class="grid gap-10 md:grid-cols-2 md:items-center">
+          <div class="max-w-3xl">
+            <h2 class="text-2xl md:text-3xl font-bold text-emerald-900 mb-2">
+              Events & Programs
+            </h2>
+            <p class="text-sm md:text-base text-emerald-900/80 leading-relaxed">
+              We host seasonal work days, youth workshops, and community events throughout the year.
+              Check back here for upcoming programs happening across Buffalo and Western New York.
+            </p>
+
+            <div class="mt-4 flex flex-wrap gap-3">
+              <a
+                href="/programs"
+                class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-500 transition-colors"
+              >
+                Explore Our Programs
+              </a>
+
+              <a
+                href="#contact"
+                class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-emerald-600 text-emerald-800 text-sm font-semibold hover:bg-emerald-50 transition-colors"
+              >
+                Volunteer or Partner
+              </a>
+            </div>
+        </div>
+
+          <ImpactGraphics variant="youth" class="max-w-xl mx-auto" />
+        </div>
+
+        <div class="grid gap-4 md:grid-cols-2">
+          <article class="rounded-xl border border-emerald-100 bg-emerald-50/60 p-4 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-semibold text-emerald-900 mb-1">
+                Community Garden Work Day
+              </h3>
+              <p class="text-xs text-emerald-800 mb-1">
+                April 20, 2025 • Sample Garden Site, Buffalo, NY
+              </p>
+              <p class="text-sm text-emerald-900/80">
+                Join us for a hands-on day of planting, weeding, and preparing garden beds for the season.
+              </p>
+            </div>
+            <div class="mt-3">
+              <button
+                class="inline-flex items-center px-3 py-1.5 rounded-lg border border-emerald-600 text-xs font-medium text-emerald-800 hover:bg-emerald-100 transition-colors"
+              >
+                Learn More / RSVP
+              </button>
+            </div>
+          </article>
+
+          <article class="rounded-xl border border-emerald-100 bg-emerald-50/60 p-4 flex flex-col justify-between">
+            <div>
+              <h3 class="text-base font-semibold text-emerald-900 mb-1">
+                Youth Gardening Workshop
+              </h3>
+              <p class="text-xs text-emerald-800 mb-1">
+                May 4, 2025 • Sample Community Center, Buffalo, NY
+              </p>
+              <p class="text-sm text-emerald-900/80">
+                A beginner-friendly session for youth to learn the basics of soil, seeds, watering, and plant care.
+              </p>
+            </div>
+            <div class="mt-3">
+              <button
+                class="inline-flex items-center px-3 py-1.5 rounded-lg border border-emerald-600 text-xs font-medium text-emerald-800 hover:bg-emerald-100 transition-colors"
+              >
+                Learn More / RSVP
+              </button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPORT SECTION -->
+  <section
+    id="support"
+    class="section-fade min-h-screen flex items-center py-16 border-t border-emerald-100 bg-emerald-50/40">
+    <div class="w-full">
+      <div class="max-w-6xl mx-auto px-4">
+        <!-- Move the whole CTA zone up slightly on desktop -->
+        <div class="grid gap-10 md:grid-cols-2 md:items-start md:-mt-8">
+
+          <!-- LEFT COLUMN: WHY SUPPORT -->
+          <div class="space-y-5">
+            <p class="text-xs tracking-[0.25em] uppercase text-emerald-700">
+              Support Buffalo Harvest
+            </p>
+
+            <h2 class="text-2xl md:text-3xl font-bold text-emerald-900">
+              Help fund gardens, education, and fresh food access.
+            </h2>
+
+            <p class="text-sm md:text-base text-emerald-900/80 leading-relaxed">
+              Your support helps us build and maintain community gardens, run youth workshops,
+              and expand sustainable growing programs across Buffalo and Western New York.
+            </p>
+
+            <ul class="space-y-2 text-sm text-emerald-900/80">
+              <li class="flex gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-600"></span>
+                Garden supplies, soil, seeds, and tools
+              </li>
+              <li class="flex gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-600"></span>
+                Youth education workshops and materials
+              </li>
+              <li class="flex gap-2">
+                <span class="mt-1 h-2 w-2 rounded-full bg-emerald-600"></span>
+                Seasonal work days and ongoing maintenance
+              </li>
+            </ul>
+
+            <p class="text-xs text-emerald-800/70">
+              Buffalo Harvest Inc. is a registered 501(c)(3) nonprofit organization.
+            </p>
+          </div>
+
+          <!-- RIGHT COLUMN: FLOATING GRAPHIC + DONATION PRESETS -->
+          <div class="relative">
+            <!-- Float the graphic upward so it doesn't push the donate box down -->
+            <div class="relative z-0 -mt-16 mb-4">
+              <ImpactGraphics variant="donate" class="max-w-xl mx-auto" />
+            </div>
+
+            <!-- Donation box pulled higher + emphasized -->
+            <div class="relative z-10 rounded-3xl border border-emerald-100 bg-white/90 p-6 md:p-8 space-y-5 shadow-sm ring-1 ring-emerald-200">
+              <h3 class="text-lg font-semibold text-emerald-900">
+                Choose a level of support
+              </h3>
+
+              <div class="grid gap-3 sm:grid-cols-2">
+                <button class="donate-preset p-4 rounded-xl border border-emerald-100 text-left hover:bg-emerald-50" data-amount="25">
+                  <div class="font-semibold">$25</div>
+                  <p class="text-sm text-emerald-900/70">Seeds & starter supplies</p>
+                </button>
+
+                <button class="donate-preset p-4 rounded-xl border border-emerald-100 text-left hover:bg-emerald-50" data-amount="50">
+                  <div class="font-semibold">$50</div>
+                  <p class="text-sm text-emerald-900/70">Tools & workshop materials</p>
+                </button>
+
+                <button class="donate-preset p-4 rounded-xl border border-emerald-100 text-left hover:bg-emerald-50" data-amount="100">
+                  <div class="font-semibold">$100</div>
+                  <p class="text-sm text-emerald-900/70">Garden bed or soil support</p>
+                </button>
+
+                <button class="donate-preset p-4 rounded-xl border border-emerald-100 text-left hover:bg-emerald-50" data-amount="custom">
+                  <div class="font-semibold">Custom</div>
+                  <p class="text-sm text-emerald-900/70">Give any amount</p>
+                </button>
+              </div>
+
+              <a
+                id="donate-cta"
+                href="#contact"
+                class="block text-center mt-4 px-5 py-2.5 rounded-lg bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 transition">
+                Donate / Get Involved
+              </a>
+
+              <p class="text-[11px] text-emerald-900/60 text-center">
+                We’ll follow up within 48 hours.
+              </p>
+
+              <p id="donate-note" class="text-xs text-emerald-900/60 text-center">
+                Selected: none
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- PRESET SCRIPT (ONLY ONCE) -->
+    <script is:inline>
+      if (typeof window !== "undefined") {
+        window.addEventListener("DOMContentLoaded", () => {
+          const buttons = document.querySelectorAll(".donate-preset");
+          const note = document.getElementById("donate-note");
+          const cta = document.getElementById("donate-cta");
+
+          if (!buttons.length || !note || !cta) return;
+
+          const buildMessage = (amount) =>
+            amount === "custom"
+              ? "I want to support Buffalo Harvest with a custom donation."
+              : `I want to support Buffalo Harvest with $${amount}.`;
+
+          // Clear any previous value so default CTA message works
+          localStorage.removeItem("bh_contact_prefill");
+
+          buttons.forEach((btn) => {
+            btn.addEventListener("click", () => {
+              buttons.forEach((b) => b.classList.remove("ring-2", "ring-emerald-500"));
+              btn.classList.add("ring-2", "ring-emerald-500");
+
+              const selectedAmount = btn.getAttribute("data-amount");
+
+              note.textContent =
+                selectedAmount === "custom"
+                  ? "Selected: custom amount"
+                  : `Selected: $${selectedAmount}`;
+
+              localStorage.setItem("bh_contact_prefill", buildMessage(selectedAmount));
+            });
+          });
+
+          cta.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            const textarea = document.getElementById("contact-message");
+            const saved =
+              localStorage.getItem("bh_contact_prefill") ||
+              "I want to support Buffalo Harvest. Please contact me with next steps.";
+
+            if (textarea) {
+              textarea.value = saved;
+              textarea.focus();
+            }
+
+            const target = document.getElementById("contact");
+            if (target) {
+              target.scrollIntoView({ behavior: "smooth", block: "start" });
+              history.pushState(null, "", "#contact");
+            } else {
+              window.location.hash = "#contact";
+            }
+          });
+        });
+      }
+    </script>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <section id="contact" class="section-fade min-h-screen flex items-center py-16 border-t border-emerald-100 bg-emerald-50/40">
+    <div class="w-full">
+      <div class="max-w-3xl mx-auto bg-white/85 border border-emerald-100 rounded-3xl shadow-sm px-6 py-10 md:px-10 md:py-12">
+        <div class="grid gap-10 md:grid-cols-2 md:items-start">
+          <div class="space-y-6">
+            <div>
+              <h2 class="text-2xl md:text-3xl font-bold text-emerald-900 mb-2">
+                Contact Us
+              </h2>
+
+              <p class="text-sm md:text-base text-emerald-900/80 leading-relaxed">
+                Have questions, want to volunteer, or interested in partnering with Buffalo Harvest Inc.?
+                Send us a message and someone from our team will get back to you.
+              </p>
+            </div>
+
+            <form class="space-y-4">
+              <div>
+                <label class="block text-sm font-medium text-emerald-900 mb-1">Name</label>
+                <input
+                  type="text"
+                  placeholder="Your name"
+                  class="w-full rounded-lg border border-emerald-200 bg-white px-4 py-2 text-sm text-emerald-900 placeholder-emerald-400 focus:outline-none focus:border-emerald-500"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-emerald-900 mb-1">Email</label>
+                <input
+                  type="email"
+                  placeholder="you@example.com"
+                  class="w-full rounded-lg border border-emerald-200 bg-white px-4 py-2 text-sm text-emerald-900 placeholder-emerald-400 focus:outline-none focus:border-emerald-500"
+                />
+              </div>
+
+              <div>
+                <label class="block text-sm font-medium text-emerald-900 mb-1">Message</label>
+                <textarea
+                  id="contact-message"
+                  rows="4"
+                  placeholder="How can we help?"
+                  class="w-full rounded-lg border border-emerald-200 bg-white px-4 py-2 text-sm text-emerald-900 placeholder-emerald-400 focus:outline-none focus:border-emerald-500">
+                </textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-500 transition-colors"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+
+          <div class="md:justify-self-end">
+            <ImpactGraphics variant="harvest" class="max-w-xl mx-auto" />
+          </div>
+        </div>
+
+        <p class="mt-6 text-xs text-emerald-800/70">
+          This form doesn’t send yet — we can hook it up to a real email or form service when you're ready.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>

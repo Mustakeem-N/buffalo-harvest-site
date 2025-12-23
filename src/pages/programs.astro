@@ -1,0 +1,190 @@
+---
+// src/pages/programs.astro
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import ImpactGraphics from "@/components/ImpactGraphics.astro";
+
+const programs = [
+  {
+    title: "Community Gardens",
+    tagline: "Turn underused land into food-producing spaces.",
+    bullets: [
+      "Neighborhood garden builds + seasonal maintenance",
+      "Volunteer workdays and community stewardship",
+      "Produce distribution and local partnerships",
+    ],
+    outcomes: ["Fresh produce access", "Stronger community ties", "Beautified lots"],
+  },
+  {
+    title: "Youth Education",
+    tagline: "Hands-on learning that connects kids to food and health.",
+    bullets: [
+      "Gardening basics: soil, seeds, watering, plant care",
+      "Nutrition lessons and cooking demos (as available)",
+      "School/community center workshops",
+    ],
+    outcomes: ["Health literacy", "Life skills", "Youth leadership"],
+  },
+  {
+    title: "Agricultural Training",
+    tagline: "Build skills for growing, sustainability, and opportunity.",
+    bullets: [
+      "Beginner training for adults (gardening + basics of farming)",
+      "Sustainable practices: composting, soil health, water stewardship",
+      "Pathways to community leadership and stewardship roles",
+    ],
+    outcomes: ["Job-ready skills", "Sustainable growing habits", "Confidence to grow food"],
+  },
+  {
+    title: "Seasonal Events & Work Days",
+    tagline: "Show up, get your hands dirty, make impact.",
+    bullets: [
+      "Spring planting + bed prep",
+      "Summer maintenance + harvesting",
+      "Fall cleanup + season wrap-up",
+    ],
+    outcomes: ["Volunteer engagement", "Visible neighborhood impact", "Reliable garden care"],
+  },
+];
+
+// Map program titles -> ImpactGraphics variants
+type Variant = "garden" | "youth" | "training" | "donate" |"harvest";
+const variantFor = (title: string) => {
+  switch (title) {
+    case "Community Gardens":
+      return "garden";
+    case "Youth Education":
+      return "youth";
+    case "Agricultural Training":
+      return "training";
+    case "Seasonal Events & Work Days":
+      return "harvest";
+    default:
+      return "harvest";
+  }
+};
+---
+
+<BaseLayout
+  title="Programs | Buffalo Harvest Inc. | Community Gardens & Education in Buffalo, NY"
+  description="Explore Buffalo Harvest Inc. programs: community gardens, youth education, agricultural training, and seasonal workdays serving Buffalo and Western New York."
+>
+  <!-- HERO / INTRO -->
+  <section class="min-h-[70vh] flex items-center py-10">
+    <div class="w-full">
+      <div class="grid gap-10 md:grid-cols-2 md:items-center">
+        <div>
+          <p class="text-xs tracking-[0.25em] uppercase text-emerald-700 mb-3">
+            Programs
+          </p>
+          <h1 class="text-3xl md:text-5xl font-bold text-emerald-900 mb-4">
+            How Buffalo Harvest Creates Impact
+          </h1>
+          <p class="max-w-3xl text-sm md:text-base text-emerald-900/80 leading-relaxed">
+            Our programs are built to increase access to fresh food, teach practical skills, and strengthen
+            neighborhoods across Buffalo and Western New York. Below is what we run, who it’s for, and the
+            outcomes we aim to deliver.
+          </p>
+
+          <div class="mt-6 flex flex-wrap gap-3">
+            <a
+              href="/#contact"
+              class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-500 transition-colors"
+            >
+              Volunteer or Partner
+            </a>
+            <a
+              href="/#events"
+              class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-emerald-600 text-emerald-800 text-sm font-semibold hover:bg-emerald-50 transition-colors"
+            >
+              See Events
+            </a>
+          </div>
+        </div>
+
+        <div class="md:justify-self-end">
+          <ImpactGraphics variant="harvest" class="max-w-xl mx-auto" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAM CARDS -->
+  <section class="py-8 border-t border-emerald-100">
+    <div class="grid gap-4 md:grid-cols-2">
+      {programs.map((p) => (
+        <article class="rounded-3xl border border-emerald-100 bg-white/85 shadow-sm p-6">
+          <header class="mb-4 flex items-start justify-between gap-4">
+            <div>
+              <h2 class="text-xl md:text-2xl font-bold text-emerald-900">
+                {p.title}
+              </h2>
+              <p class="text-sm text-emerald-900/70 mt-1">
+                {p.tagline}
+              </p>
+            </div>
+
+            {/* small branded graphic */}
+            <div class="hidden sm:block w-32 shrink-0">
+              <ImpactGraphics variant={variantFor(p.title)} class="w-full" />
+            </div>
+          </header>
+
+          {/* mobile graphic (shows under header so layout doesn't get cramped) */}
+          <div class="sm:hidden -mt-2 mb-4">
+            <ImpactGraphics variant={variantFor(p.title)} class="max-w-md mx-auto" />
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <h3 class="text-sm font-semibold text-emerald-900 mb-2">What we do</h3>
+              <ul class="list-disc list-inside space-y-1 text-sm text-emerald-900/80">
+                {p.bullets.map((b) => <li>{b}</li>)}
+              </ul>
+            </div>
+
+            <div class="rounded-2xl bg-emerald-50/70 border border-emerald-100 p-4">
+              <h3 class="text-sm font-semibold text-emerald-900 mb-2">Outcomes</h3>
+              <div class="flex flex-wrap gap-2">
+                {p.outcomes.map((o) => (
+                  <span class="text-xs px-2.5 py-1 rounded-full bg-white border border-emerald-100 text-emerald-800">
+                    {o}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-12 border-t border-emerald-100">
+    <div class="rounded-3xl border border-emerald-100 bg-emerald-50/60 p-6 md:p-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <div class="max-w-2xl">
+        <h2 class="text-2xl md:text-3xl font-bold text-emerald-900 mb-2">
+          Want to bring a program to your neighborhood?
+        </h2>
+        <p class="text-sm md:text-base text-emerald-900/80 leading-relaxed">
+          If you’re a school, community center, faith organization, block club, or local partner, we can
+          explore a garden build, youth workshop, or seasonal work day together.
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-3">
+        <a
+          href="/#contact"
+          class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-500 transition-colors"
+        >
+          Contact Us
+        </a>
+        <a
+          href="/"
+          class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-emerald-600 text-emerald-800 text-sm font-semibold hover:bg-emerald-100 transition-colors"
+        >
+          Back to Home
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

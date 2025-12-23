@@ -1,0 +1,54 @@
+---
+// src/layouts/BaseLayout.astro
+import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+const {
+  title = "Buffalo Harvest Inc.",
+  description = "Improving community health and sustainability through local food, education, and community gardens in Buffalo and Western New York.",
+} = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="google-site-verification" content="DTLGbR5bBysRjj4-Ccsm9MW_lXDF9baV7mxWAGViUMY" />
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.buffaloharvest.org/" />
+
+    <!-- Open Graph (Facebook / LinkedIn) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content="https://www.buffaloharvest.org/" />
+    <meta property="og:site_name" content="Buffalo Harvest Inc." />
+    <meta property="og:image" content="https://www.buffaloharvest.org/og-image.jpg" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://www.buffaloharvest.org/og-image.jpg" />
+  </head>
+
+
+  <body class="min-h-screen flex flex-col bg-[#f8fff2] text-green-700">
+    <Navbar />
+
+    <main class="flex-1">
+      <!-- Page content container -->
+      <div class="max-w-6xl mx-auto px-4 py-10">
+        <slot />
+      </div>
+    </main>
+
+    <Footer />
+  </body>
+</html>
+

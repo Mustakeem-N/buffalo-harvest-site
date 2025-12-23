@@ -1,0 +1,205 @@
+---
+// src/components/Navbar.astro
+
+// These are HOME page anchors (must be absolute so they work from /programs)
+const links = [
+  { href: "/#home", label: "Home", target: "home" },
+  { href: "/#about", label: "About", target: "about" },
+  { href: "/#mission", label: "Our Mission", target: "mission" },
+  { href: "/#events", label: "Events", target: "events" },
+  { href: "/#support", label: "Support", target: "support" },
+  { href: "/#contact", label: "Contact", target: "contact" },
+];
+---
+
+<header id="site-header" class="header-shell sticky top-0 z-50">
+  <nav class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+    <!-- Logo / title -->
+    <a href="/#home" class="flex items-center gap-2">
+      <div class="h-9 w-9 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center text-emerald-700 text-xl font-semibold">
+        BH
+      </div>
+      <div>
+        <div class="text-sm font-semibold tracking-wide uppercase text-emerald-900">
+          Buffalo Harvest Inc.
+        </div>
+        <div class="text-xs text-emerald-700/70">
+          Growing Healthier Neighborhoods
+        </div>
+      </div>
+    </a>
+
+    <!-- Desktop nav -->
+    <div class="hidden md:flex items-center gap-6 text-sm font-medium">
+      <ul class="flex items-center gap-4">
+        {links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="nav-link text-emerald-800/70 hover:text-emerald-900 transition-colors"
+              data-target={link.target}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+
+        <!-- Programs (route link, NOT tracked by section observer) -->
+        <li>
+          <a
+            href="/programs"
+            class="text-emerald-800/70 hover:text-emerald-900 transition-colors"
+          >
+            Programs
+          </a>
+        </li>
+      </ul>
+
+      <!-- Donate button -->
+      <a
+        href="/#support"
+        class="inline-flex items-center px-4 py-1.5 rounded-full bg-emerald-600 text-white text-xs font-semibold hover:bg-emerald-500 transition-colors shadow-sm"
+      >
+        Donate / Get Involved
+      </a>
+    </div>
+
+    <!-- Mobile burger -->
+    <button
+      id="menu-toggle"
+      class="md:hidden inline-flex items-center justify-center p-2 rounded-md border border-emerald-200 text-emerald-800 bg-white/70 backdrop-blur"
+      aria-label="Toggle navigation"
+      type="button"
+    >
+      <span class="sr-only">Open main menu</span>
+      <div class="space-y-1">
+        <span class="block h-0.5 w-5 bg-emerald-800"></span>
+        <span class="block h-0.5 w-5 bg-emerald-800"></span>
+        <span class="block h-0.5 w-5 bg-emerald-800"></span>
+      </div>
+    </button>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="md:hidden hidden border-t border-emerald-100 bg-white/95 backdrop-blur">
+    <div class="max-w-6xl mx-auto px-4 py-3 space-y-3">
+      <ul class="space-y-2 text-sm font-medium">
+        {links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="nav-link block text-emerald-800/80 hover:text-emerald-900 transition-colors"
+              data-target={link.target}
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+
+        <!-- Programs (route link, NOT tracked) -->
+        <li>
+          <a
+            href="/programs"
+            class="block text-emerald-800/80 hover:text-emerald-900 transition-colors"
+          >
+            Programs
+          </a>
+        </li>
+      </ul>
+
+      <a
+        href="/#contact"
+        class="inline-flex items-center justify-center w-full px-4 py-2 rounded-lg bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-500 transition-colors shadow-sm"
+      >
+        Donate / Get Involved
+      </a>
+    </div>
+  </div>
+
+  <script is:inline>
+    if (typeof window !== 'undefined') {
+      window.addEventListener('DOMContentLoaded', () => {
+        const header = document.getElementById('site-header');
+        const toggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section[id]');
+
+        // Mobile menu toggle
+        if (toggle && menu) {
+          toggle.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+          });
+
+          // Close mobile menu when clicking a link
+          navLinks.forEach((link) => {
+            link.addEventListener('click', () => {
+              menu.classList.add('hidden');
+            });
+          });
+
+          // Close mobile menu when clicking Programs too
+          const programLinkMobile = menu.querySelector('a[href="/programs"]');
+          if (programLinkMobile) {
+            programLinkMobile.addEventListener('click', () => {
+              menu.classList.add('hidden');
+            });
+          }
+        }
+
+        // Scroll-based header styling (transparent -> solid)
+        const updateHeader = () => {
+          if (!header) return;
+          if (window.scrollY > 10) header.classList.add('nav-scrolled');
+          else header.classList.remove('nav-scrolled');
+        };
+        updateHeader();
+        window.addEventListener('scroll', updateHeader);
+
+        // Only run active-section highlighting on pages that actually have sections
+        if (!sections.length) return;
+
+        // Build lookup map for active nav links
+        const linksByTarget = new Map();
+        navLinks.forEach((link) => {
+          const target = link.getAttribute('data-target');
+          if (!target) return;
+          if (!linksByTarget.has(target)) linksByTarget.set(target, []);
+          linksByTarget.get(target).push(link);
+        });
+
+        // IntersectionObserver for fade + active nav
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              const id = entry.target.getAttribute('id');
+              if (!id) return;
+
+              // Fade-in animation
+              if (entry.isIntersecting) entry.target.classList.add('visible');
+
+              // Active navbar highlighting
+              if (entry.intersectionRatio > 0.4) {
+                navLinks.forEach((link) => {
+                  link.classList.remove('text-emerald-900', 'font-semibold', 'nav-link-active');
+                  link.classList.add('text-emerald-800/70');
+                });
+
+                const matchingLinks = linksByTarget.get(id);
+                if (matchingLinks) {
+                  matchingLinks.forEach((link) => {
+                    link.classList.remove('text-emerald-800/70');
+                    link.classList.add('text-emerald-900', 'font-semibold', 'nav-link-active');
+                  });
+                }
+              }
+            });
+          },
+          { threshold: [0.15, 0.4] }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+      });
+    }
+  </script>
+</header>
