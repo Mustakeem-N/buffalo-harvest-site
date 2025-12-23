@@ -26,6 +26,9 @@ const links = [
         <div class="text-xs text-emerald-700/70">
           Growing Healthier Neighborhoods
         </div>
+        <div class="text-[11px] text-emerald-700/60">
+          Serving Buffalo &amp; Western New York
+        </div>
       </div>
     </a>
 
@@ -47,9 +50,9 @@ const links = [
         <!-- Programs (route link, NOT tracked by section observer) -->
         <li>
           <a
+            id="nav-programs"
             href="/programs"
-            class="text-emerald-800/70 hover:text-emerald-900 transition-colors"
-          >
+            class="text-emerald-800/70 hover:text-emerald-900 transition-colors">
             Programs
           </a>
         </li>
@@ -99,9 +102,9 @@ const links = [
         <!-- Programs (route link, NOT tracked) -->
         <li>
           <a
+            id="nav-programs-mobile"
             href="/programs"
-            class="block text-emerald-800/80 hover:text-emerald-900 transition-colors"
-          >
+            class="block text-emerald-800/80 hover:text-emerald-900 transition-colors">
             Programs
           </a>
         </li>
@@ -124,6 +127,18 @@ const links = [
         const menu = document.getElementById('mobile-menu');
         const navLinks = document.querySelectorAll('.nav-link');
         const sections = document.querySelectorAll('section[id]');
+        // Highlight Programs when on /programs
+        const isProgramsPage = window.location.pathname.includes('programs');
+        if (isProgramsPage) {
+          const prog = document.getElementById('nav-programs');
+          const progM = document.getElementById('nav-programs-mobile');
+
+          [prog, progM].forEach((el) => {
+            if (!el) return;
+            el.classList.remove('text-emerald-800/70', 'text-emerald-800/80');
+            el.classList.add('text-emerald-900', 'font-semibold', 'nav-link-active');
+          });
+        }
 
         // Mobile menu toggle
         if (toggle && menu) {
