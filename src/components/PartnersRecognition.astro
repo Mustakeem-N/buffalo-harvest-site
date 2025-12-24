@@ -1,0 +1,82 @@
+---
+// src/components/PartnersRecognition.astro
+import ImpactGraphicsNYBadge from "@/components/ImpactGraphicsNYBadge.astro";
+
+const {
+  id = "partners",
+  title = "Partners & Recognition",
+  subtitle = "Real work gets validated by real relationships. This is where that lives.",
+} = Astro.props;
+
+// Replace placeholders with real partners later.
+// Use SVG logos when you have them.
+const partners = [
+  {
+    name: "Community Partner (Placeholder)",
+    detail: "Garden site collaboration",
+    href: "/#contact",
+  },
+  {
+    name: "Education Partner (Placeholder)",
+    detail: "Youth workshop host",
+    href: "/#contact",
+  },
+  {
+    name: "Food Access Partner (Placeholder)",
+    detail: "Distribution / pantry tie-in",
+    href: "/#contact",
+  },
+];
+---
+
+<section id={id} class="py-12 border-t border-emerald-100 bg-white/70">
+  <div class="max-w-6xl mx-auto px-4">
+    <div class="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+      <div class="max-w-3xl">
+        <h2 class="text-2xl md:text-3xl font-bold text-emerald-900">{title}</h2>
+        <p class="mt-2 text-sm md:text-base text-emerald-900/75 leading-relaxed">
+          {subtitle}
+        </p>
+      </div>
+
+      <div class="rounded-3xl border border-emerald-100 bg-white p-4 flex items-center gap-3">
+        <div class="leading-tight">
+          <div class="text-xs font-semibold uppercase tracking-wider text-emerald-800">
+            Recognition
+          </div>
+        </div>
+        <ImpactGraphicsNYBadge class="h-10 opacity-90" />
+      </div>
+    </div>
+
+    <div class="mt-8 grid gap-4 md:grid-cols-3">
+      {partners.map((p) => (
+        <a
+          href={p.href}
+          class="block rounded-3xl border border-emerald-100 bg-white/90 p-6 shadow-sm hover:bg-emerald-50 transition"
+        >
+          <div class="text-sm font-bold text-emerald-900">{p.name}</div>
+          <div class="mt-2 text-sm text-emerald-900/70">{p.detail}</div>
+          <div class="mt-4 text-xs font-semibold text-emerald-700">Connect →</div>
+        </a>
+      ))}
+    </div>
+
+    <div class="mt-8 rounded-3xl border border-emerald-100 bg-emerald-50/60 p-6 md:p-8">
+      <div class="text-sm font-bold text-emerald-900">Want to partner?</div>
+      <p class="mt-2 text-sm md:text-base text-emerald-900/75 max-w-3xl leading-relaxed">
+        If you have land, volunteers, a school/community space, or distribution capacity, we can build a program together.
+        We prioritize partners ready to commit to consistent participation—not one-off photo ops.
+      </p>
+
+      <div class="mt-4">
+        <a
+          href="/#contact"
+          class="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-emerald-600 text-white text-sm font-semibold hover:bg-emerald-500 transition-colors"
+        >
+          Become a Partner
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

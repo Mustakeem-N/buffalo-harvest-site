@@ -1,0 +1,16 @@
+---
+const { class: className = "" } = Astro.props;
+---
+
+<div
+  class={`inline-flex items-center gap-2 rounded-full border border-emerald-100 bg-white/80 px-3 py-1 ${className}`}
+  aria-label="Recognized in New York"
+>
+  <span class="inline-flex items-center justify-center h-5 w-5 rounded-full bg-emerald-700 text-white text-[10px] font-bold">
+    NY
+  </span>
+
+  <span class="text-[10px] font-semibold uppercase tracking-wider text-emerald-700">
+    Recognized in NY
+  </span>
+</div>
